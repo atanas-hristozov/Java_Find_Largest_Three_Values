@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.SimpleTimeZone;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        int n = Integer.parseInt(input);
+        int firstmax = -500;
+        int secondmax = -500;
+        int thirdmax = -500;
+        for (int i = 0; i<n; i++) {
+            String input2 = scanner.nextLine();
+            int k = Integer.parseInt(input2);
+            if (k >= thirdmax && k >= secondmax && k >= firstmax) {
+                thirdmax = secondmax;
+                secondmax = firstmax;
+                firstmax = k;
+            } else if (k >= thirdmax && k >= secondmax && k <= firstmax) {
+                thirdmax = secondmax;
+                secondmax = k;
+            } else if (k >= thirdmax && k <= secondmax) {
+                thirdmax = k;
+            }
+        }
+        System.out.println(firstmax + ", " + secondmax + " and " + thirdmax);
+    }
+}
